@@ -6,7 +6,7 @@ import numpy as np
 
 
 # load the dataset with 10 classes
-np.seed(2401998)
+np.random.seed(2401998)
 
 digits = load_digits()
 print(digits.data.shape)
@@ -38,7 +38,7 @@ net = NeuralNet([
     Activation("sigmoid")
 ])
 
-train(net, X, yy, epochs=3000, batch_size=1000, optimizer= SGD(), loss = MCE())
+train(net, X, yy, epochs=3000, batch_size=1000, optimizer= SGD(), loss = CCE())
 
-loss = MSE()
+loss = CCE()
 print(loss.loss(yy,net.forward(X)))
