@@ -30,6 +30,5 @@ def train(net = None,
 
             net.backward(grad)
             optimizer.step(net)
-        if e%1000 == 0 :
-            print(f"epoch {e+1} | Loss : {epoch_loss}")
+        print(f"epoch {e+1} | Loss : {epoch_loss}")
 

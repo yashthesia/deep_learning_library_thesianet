@@ -13,7 +13,7 @@
 
  # thesiaNet functionality 
    - initialization : Xavier 
-   - layer : linear, sigmoid, tanh, relu
+   - layer : Convolutional, linear, sigmoid, tanh, relu
    - optimization : stochastic gradient descent. Momentum, Adagrad
    - loss: means square error, binary cross entropy, categorical cross entropy
    - test : test file contains all test file which can be used for 
@@ -22,3 +22,4 @@
 
  # Acknowledgements #
  Some modules of this implementation is based on this [repo](https://github.com/joelgrus/joelnet)</br>
+ [https://wiseodd.github.io](https://wiseodd.github.io)</br>
