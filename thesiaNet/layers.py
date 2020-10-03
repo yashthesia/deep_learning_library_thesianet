@@ -20,10 +20,8 @@ class Linear:
         # initialization of the layer parameter
         self.params = {}
         self.grads = {}
-        self.params["w"] = np.random.rand(input_size, output_size)
-        self.params["w"] = self.params["w"]/self.params["w"].sum()
-        self.params["b"] = np.random.rand(output_size)
-        self.params["b"] = self.params["b"] / self.params["b"].sum()
+        self.params["w"] = np.random.randn(input_size, output_size)/np.sqrt(input_size/2) # here we are using xavier initialization
+        self.params["b"] = np.random.rand(output_size)/np.sqrt(input_size/2)
         return
 
     def forward(self, input):
