@@ -11,7 +11,7 @@ class Batch:
         :param batch_size: bach size
         :param shuffle: Boolean values (True : shuffeling)
         """
-        self.batch_size = 32
+        self.batch_size = batch_size
         self.shuffle = shuffle
         self.starts = np.arange(0, len(input), self.batch_size)
         if shuffle:
