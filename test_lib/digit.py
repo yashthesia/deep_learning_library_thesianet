@@ -31,11 +31,11 @@ print(yy.shape)
 # define NN
 net = NeuralNet([
     Linear(64,128),
-    Activation("relu"),
+    Activation("tanh"),
     Linear(128,256),
-    Activation("relu"),
+    Activation("tanh"),
     Linear(256,10),
-    Activation("sigmoid")
+    Activation("softmax")
 ])
 
 train(net, X, yy, epochs=3000, batch_size=1000, optimizer= SGD(), loss = CCE())

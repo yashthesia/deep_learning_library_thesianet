@@ -44,12 +44,12 @@ class BCE:
 
 
 
-class MCE:
+class CCE:
     def loss(self, predicted, actual):
         """
         :param predicted: output of the forward pass of the NN
         :param actual: actual dataset's output
-        :return: multi class cross entropy
+        :return: categorical cross entropy
         """
         return sum(-1*actual*np.log(predicted))
 

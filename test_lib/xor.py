@@ -8,15 +8,13 @@ X = np.array([[0,0],[0,1],[1,0],[1,1]])
 y  = np.array([[0],[1],[1],[0]])
 
 net = NeuralNet([
-    Linear(2,100),
+    Linear(2,10),
     Activation("relu"),
-    Linear(100, 100),
-    Activation("relu"),
-    Linear(100, 1),
+    Linear(10, 1),
     Activation("sigmoid")
 
 ])
-train(net, X, y, epochs=500000, batch_size=32)
+train(net, X, y, epochs=50000, batch_size=32, optimizer=SGD(lr=1))
 print(net.forward(X))
 loss = BCE()
 print(loss.loss(net.forward(X), y))
