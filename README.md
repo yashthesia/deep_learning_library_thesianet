@@ -12,8 +12,8 @@
  numpy
 
  # thesiaNet functionality 
-   - initialization : xavier 
-   - layer : linear, sigmoid, tanh, relu 
+   - initialization : Xavier 
+   - layer : linear, sigmoid, tanh, relu
    - optimization : stochastic gradient descent
    - loss: means square error, bunary cross entropy, categorical cross entropy
    - test : test file contains all test file which can be used for 
