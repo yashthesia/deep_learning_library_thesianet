@@ -14,7 +14,7 @@ net = NeuralNet([
     Activation("sigmoid")
 
 ])
-train(net, X, y, epochs=50000, batch_size=32, optimizer=SGD(lr=1))
+train(net, X, y, epochs=50000, batch_size=32, optimizer=Adagrad(lr=0.001))
 print(net.forward(X))
 loss = BCE()
 print(loss.loss(net.forward(X), y))

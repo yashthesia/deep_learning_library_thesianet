@@ -31,14 +31,15 @@ print(yy.shape)
 # define NN
 net = NeuralNet([
     Linear(64,128),
-    Activation("tanh"),
+    Activation("relu"),
     Linear(128,256),
-    Activation("tanh"),
+    Activation("relu"),
     Linear(256,10),
-    Activation("softmax")
+    Activation("sigmoid")
 ])
 
-train(net, X, yy, epochs=3000, batch_size=1000, optimizer= SGD(), loss = CCE())
+train(net, X, yy, epochs=3000, batch_size=1000, optimizer= Adagrad(), loss= CCE())
 
 loss = CCE()
 print(loss.loss(yy,net.forward(X)))
+print(net.forward(X))

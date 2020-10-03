@@ -14,7 +14,7 @@
  # thesiaNet functionality 
    - initialization : Xavier 
    - layer : linear, sigmoid, tanh, relu
-   - optimization : stochastic gradient descent
+   - optimization : stochastic gradient descent. Momentum, Adagrad
    - loss: means square error, binary cross entropy, categorical cross entropy
    - test : test file contains all test file which can be used for 
 
