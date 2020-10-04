@@ -13,7 +13,7 @@
 
  # thesiaNet functionality 
    - initialization : Xavier 
-   - layer : Convolutional, linear, sigmoid, tanh, relu, flatten, softmax
+   - layer : Convolutional, linear, sigmoid, tanh, relu, flatten
    - optimization : stochastic gradient descent. Momentum, Adagrad
    - loss: means square error, binary cross entropy, categorical cross entropy
    - test : test file contains all test files (ANN, CNN claffication)
@@ -21,6 +21,6 @@
 
 
  # Acknowledgements 
-###Course: 11-785, Intro to Deep Learning [link](https://www.youtube.com/watch?v=oNrdYVsHZxw&feature=youtu.be)
-###Some modules of this implementation is based on this [repo](https://github.com/joelgrus/joelnet)
-###[https://wiseodd.github.io](https://wiseodd.github.io)</br>
+    - Course: 11-785, Intro to Deep Learning [link](https://www.youtube.com/watch?v=oNrdYVsHZxw&feature=youtu.be)
+    - Some modules of this implementation is based on this [repo](https://github.com/joelgrus/joelnet)
+    - [https://wiseodd.github.io](https://wiseodd.github.io)</br>
