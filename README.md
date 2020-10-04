@@ -20,7 +20,7 @@
 
 
 
- # Acknowledgements #
- Course: 11-785, Intro to Deep Learning [link]()<\br>
- Some modules of this implementation is based on this [repo](https://github.com/joelgrus/joelnet)</br>
- [https://wiseodd.github.io](https://wiseodd.github.io)</br>
+ # Acknowledgements 
+    - Course: 11-785, Intro to Deep Learning [link](https://www.youtube.com/watch?v=oNrdYVsHZxw&feature=youtu.be)
+    - Some modules of this implementation is based on this [repo](https://github.com/joelgrus/joelnet)
+    - [https://wiseodd.github.io](https://wiseodd.github.io)</br>
