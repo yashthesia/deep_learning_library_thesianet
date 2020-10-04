@@ -87,7 +87,7 @@ class Activation:
 
         if self.activation_name == "softmax":
             out = np.exp( self.input)
-            out = out / (out.sum(axis=0) + 1e-10)
+            out = out / (out.sum(axis=-1).reshape(-1,1) + 1e-10)
             return out
 
 
@@ -110,8 +110,8 @@ class Activation:
             out = out * (1 - out)
 
         if self.activation_name == "softmax":
-            out = 1 / (1 + np.exp(self.input*-1))
-            out = out * (1 - out)
+            grads = grads - ((grads*self.forward(self.input)).sum(axis = -1)).reshape(-1,1)
+            out = self.forward(self.input)
 
         if self.activation_name == "linear":
             out = 1

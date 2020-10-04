@@ -12,7 +12,8 @@ def train(net = None,
           epochs  = 5000,
           batch_size = 32,
           loss = MSE(),
-          optimizer= SGD()):
+          optimizer= SGD(),
+          epoch_skip = 1):
 
 
 
@@ -30,5 +31,9 @@ def train(net = None,
 
             net.backward(grad)
             optimizer.step(net)
-        print(f"epoch {e+1} | Loss : {epoch_loss}")
+        if (e+1)%epoch_skip == 0:
+            print(f"epoch {e+1} | Loss : {epoch_loss}")
+
+
+
 

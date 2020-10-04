@@ -51,7 +51,7 @@ class CCE:
         :param actual: actual dataset's output
         :return: categorical cross entropy
         """
-        return sum(-1*actual*np.log(predicted))
+        return (-1*actual*(np.log(predicted+1e-7))).sum()
 
 
     def grad(self, predicted, actual):
@@ -60,6 +60,6 @@ class CCE:
         :param actual: actual dataset's output
         :return: partial diff of MCE
         """
-        return  -1*actual/predicted
+        return  -1*actual/(predicted+1e-7)
 
 
