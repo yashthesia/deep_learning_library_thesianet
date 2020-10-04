@@ -13,10 +13,10 @@
 
  # thesiaNet functionality 
    - initialization : Xavier 
-   - layer : Convolutional, linear, sigmoid, tanh, relu
+   - layer : Convolutional, linear, sigmoid, tanh, relu, flatten
    - optimization : stochastic gradient descent. Momentum, Adagrad
    - loss: means square error, binary cross entropy, categorical cross entropy
-   - test : test file contains all test file which can be used for 
+   - test : test file contains all test files (ANN, CNN claffication)
 
 
 
