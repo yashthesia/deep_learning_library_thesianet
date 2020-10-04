@@ -60,7 +60,7 @@ class Activation:
         self.activation_name = activation_name
         self.params = {}
         self.grads = {}
-        self.params["activation"] = self.activation_name
+        self.params["not_trainable"] = self.activation_name
 
     def forward(self, input):
         """
@@ -116,7 +116,8 @@ class Activation:
         if self.activation_name == "linear":
             out = 1
 
-        self.grads["activation"] = out * grads
+
+        self.grads["not_trainable"] = out * grads
         return out * grads
 
 
@@ -130,9 +131,18 @@ class Convo:
                  number_of_filters=64,
                  padding=0,
                  stride=1):
-
+        """
+        This class apply convolution 2d on inout data
+        here I assume that the input dimension would be : (Batch size, Height, Widhth, Features)
+        :param input_size: input dimension
+        :param filter_size: filter size (assuming that the shape is square)
+        :param number_of_filters: output features or number of filters
+        :param padding: padding applied in Height and width
+        :param stride: stride
+        """
         self.input_size = input_size  # (H, W, D)
-        self.batch, self.H_in, self.W_in, self.D_in = self.input_size
+        # print(input_size)
+        self.H_in, self.W_in, self.D_in = self.input_size
         self.D_out = number_of_filters
 
         self.filer_size = filter_size
@@ -148,7 +158,7 @@ class Convo:
     def forward(self, input):
         # save the input for gradient calculation and add padding on it
         self.input = np.pad(input, [(0, 0), (self.padding,self.padding),(self.padding,self.padding),(0,0)], mode='constant', constant_values=0)
-        # print(self.input.shape)
+
         #calculating output dimensions
         self.batch, _, _, _ = input.shape
         self.H_out = ((self.H_in + 2*self.padding -self.filer_size)//(self.stride)) +1
@@ -179,10 +189,30 @@ class Convo:
                         self.grads['w'][:,:,:,f] += self.input[m,i:i+self.filer_size,j:j+self.filer_size,:]*grad[m,i,j,f]
                         self.grads['b'][f] = grad[m,i,j,f]
 
-        self.grads['input'] = self.grads['input'][:,self.padding:-self.padding,self.padding:-self.padding]
+
+        if self.padding > 0:
+            self.grads['input'] = self.grads['input'][:,self.padding:-self.padding,self.padding:-self.padding]
+
 
         return self.grads['input']
 
 
+class Flatten:
+    def __init__(self, input_shape = None):
+        self.params = {}
+        self.grads= {}
+        self.params['not_trainable'] = 'Fatten'
+        self.input_shape = input_shape
+        self.out_shape = 1
+        for f in self.input_shape:
+            self.out_shape *= f
 
+
+    def forward(self, input):
+        return input.reshape(-1,self.out_shape)
+
+    def backward(self, grad):
+        self.grads['not_trainable'] =  grad.reshape(tuple([-1]+list(self.input_shape)))
+
+        return self.grads['not_trainable']
 

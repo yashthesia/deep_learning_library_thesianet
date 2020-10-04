@@ -13,9 +13,9 @@ y = y[:,:-2,:-2]
 
 
 net = NeuralNet([
-    Convo(X.shape, number_of_filters=1)
+    Convo((10,10,3), number_of_filters=1)
 ])
-train(net, X, y, epochs=50, batch_size=1000, optimizer=Adagrad(lr=0.001))
+train(net, X, y, epochs=200, batch_size=1000, optimizer=Adagrad(lr=0.001))
 
 #testing data
 X = np.random.randn(1,10,10,3)

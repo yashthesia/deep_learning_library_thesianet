@@ -37,7 +37,7 @@ class NeuralNet:
         for layer in self.layers:
             for name, param in layer.params.items():
                 grad = layer.grads[name]
-                if name != "activation":
+                if name != "not_trainable":
                     pass_data.append((param, grad))
 
         return pass_data
