@@ -12,10 +12,9 @@ digits = load_digits(n_class=10)
 # print(digits.data.shape)
 # print(digits.target.shape)
 
-#data Normalization
-X = (digits.data/16)
+# data Normalization
+X = (digits.data / 16)
 y = digits.target
-
 
 yy = []
 for i in range(len(y)):
@@ -29,17 +28,15 @@ y = yy
 
 X_train, X_test, y_train, y_test = X[:1700], X[1700:], y[:1700], y[1700:]
 
-
 # define NN
 net = NeuralNet([
-    Linear(64,128),
+    Linear(64, 128),
     Activation("relu"),
-    Linear(128,256),
+    Linear(128, 256),
     Activation("relu"),
-    Linear(256,10),
+    Linear(256, 10),
     Activation("softmax")
 ])
-
 
 
 def acc(pred, actual):
@@ -47,22 +44,20 @@ def acc(pred, actual):
     actual = np.argmax(actual, axis=-1)
     return np.where(pred == actual)[0].shape[0] / (len(pred))
 
+
 loss = MSE()
 
-test_acc  = []
-train_acc  = []
+test_acc = []
+train_acc = []
 # print(acc(net.forward(X_train),y_train))
 for i in range(2000):
     train(net, X_train, y_train, epochs=1, batch_size=1000, optimizer=Adagrad(0.001), loss=MSE(), epoch_skip=100)
-    train_acc.append([acc(net.forward(X_train),y_train)])
+    train_acc.append([acc(net.forward(X_train), y_train)])
     test_acc.append([acc(net.forward(X_test), y_test)])
 
 plt.plot(train_acc)
 plt.plot(test_acc)
 plt.show()
-
-
-
 
 """
 epoch 2995 | Loss : 0.00023471123743766173

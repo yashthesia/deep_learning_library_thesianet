@@ -4,6 +4,7 @@ loss function is used to adjust the weights of the model
 from thesiaNet.tensor import tensor
 import numpy as np
 
+
 class MSE:
     def loss(self, predicted, actual):
         """
@@ -11,8 +12,7 @@ class MSE:
         :param actual: actual dataset's output
         :return: MSE error
         """
-        return np.sum((predicted - actual)**2)
-
+        return np.sum((predicted - actual) ** 2)
 
     def grad(self, predicted, actual):
         """
@@ -20,7 +20,7 @@ class MSE:
         :param actual: actual dataset's output
         :return: partial diff of MSE
         """
-        return 2*(predicted-actual)
+        return 2 * (predicted - actual)
 
 
 class BCE:
@@ -31,8 +31,7 @@ class BCE:
         :return: binary cross entropy error
         """
         # print(np.mean((predicted - actual)**2)*0.5)
-        return  np.sum(actual*np.log(predicted) + (1-actual)*np.log(1-predicted))*-1
-
+        return np.sum(actual * np.log(predicted) + (1 - actual) * np.log(1 - predicted)) * -1
 
     def grad(self, predicted, actual):
         """
@@ -40,8 +39,7 @@ class BCE:
         :param actual: actual dataset's output
         :return: partial diff of BCE
         """
-        return ((actual/predicted) - (1-actual)/(1-predicted))*-1
-
+        return ((actual / predicted) - (1 - actual) / (1 - predicted)) * -1
 
 
 class CCE:
@@ -51,8 +49,7 @@ class CCE:
         :param actual: actual dataset's output
         :return: categorical cross entropy
         """
-        return (-1*actual*(np.log(predicted+1e-7))).sum()
-
+        return (-1 * actual * (np.log(predicted + 1e-7))).sum()
 
     def grad(self, predicted, actual):
         """
@@ -60,6 +57,4 @@ class CCE:
         :param actual: actual dataset's output
         :return: partial diff of MCE
         """
-        return  -1*actual/(predicted+1e-7)
-
-
+        return -1 * actual / (predicted + 1e-7)

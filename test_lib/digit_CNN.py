@@ -12,10 +12,9 @@ digits = load_digits(n_class=10)
 # print(digits.data.shape)
 # print(digits.target.shape)
 
-#data Normalization
-X = (digits.data/16).reshape(-1,8,8,1)
+# data Normalization
+X = (digits.data / 16).reshape(-1, 8, 8, 1)
 y = digits.target
-
 
 yy = []
 for i in range(len(y)):
@@ -29,30 +28,29 @@ y = yy
 
 X_train, X_test, y_train, y_test = X[:1700], X[1700:], y[:1700], y[1700:]
 
-plt.imshow(X[0,:,:,0])
+plt.imshow(X[0, :, :, 0])
 plt.show()
-
 
 # define NN
 net = NeuralNet([
     Convo(
-       input_size=(8,8,1),
-       filter_size=3,
-       number_of_filters= 16,
-       padding= 0,
-       stride=1
+        input_size=(8, 8, 1),
+        filter_size=3,
+        number_of_filters=16,
+        padding=0,
+        stride=1
     ),
     Activation('relu'),
     Convo(
-       input_size=(6,6,16),
-       filter_size=3,
-       number_of_filters= 32,
-       padding= 0,
-       stride=1
+        input_size=(6, 6, 16),
+        filter_size=3,
+        number_of_filters=32,
+        padding=0,
+        stride=1
     ),
     Activation('relu'),
-    Flatten((4,4,32)),
-    Linear(input_size=512, output_size= 32),
+    Flatten((4, 4, 32)),
+    Linear(input_size=512, output_size=32),
     Activation('relu'),
     Linear(input_size=32, output_size=10),
     Activation('softmax')
@@ -61,16 +59,15 @@ net = NeuralNet([
 
 loss = CCE()
 
-test_loss  = []
+test_loss = []
 for i in range(20):
     train(net, X_train, y_train, epochs=5, batch_size=1000, optimizer=Adagrad(0.001), loss=CCE(), epoch_skip=5)
-    tl = loss.loss(net.forward(X_test),y_test)
+    tl = loss.loss(net.forward(X_test), y_test)
     print(f"validatiion loss {tl}")
     test_loss.append([tl])
 
 plt.plot(test_loss)
 plt.show()
-
 
 """
 epoch 1 | Loss : [0.10602534 0.03341162 0.02476159 0.04544231 0.00758518 0.06766345
