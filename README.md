@@ -13,7 +13,7 @@
 
  # thesiaNet functionality 
    - initialization : Xavier 
-   - layer : Convolutional, flatten, linear
+   - layer : Linear, Convolutional, Flatten
    - Activation : softmax, linear, sigmoid, tanh, relu
    - optimization : stochastic gradient descent. Momentum, Adagrad
    - loss: means square error, binary cross entropy, categorical cross entropy
